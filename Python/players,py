@@ -1,0 +1,43 @@
+import random
+
+players_scores = [
+    ["AAA01", 135],
+    ["BBB01", 87],
+    ["CCC01", 188],
+    ["DDD01", 109]
+]
+
+
+while True:
+    useri = input("Enter user ID : ")
+   
+    found = False
+    for player in players_scores:
+        if player[0] == useri:
+            found = True
+            break
+
+    if not found:
+        players_scores.append([useri, 0])
+        print(f"New user '{useri}' added with a score of 0.")
+    else:
+        print(f"User '{useri}' already exists.")
+
+   
+    score = random.randint(50, 200)
+    print(f"New score for this game: {score}")
+
+    
+    for player in players_scores:
+        if player[0] == useri:
+            if score > player[1]:
+                player[1] = score
+                print(f"Top score updated for user '{useri}'!")
+            else:
+                print(f"Top score for user '{useri}' remains {player[1]}.")
+
+    
+    print("\nCurrent list of players and top scores:")
+    for player in players_scores:
+        print(f"UserID: {player[0]}, Top Score: {player[1]}")
+    print()
